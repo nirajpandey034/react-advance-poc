@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addUser } from '../Redux/User/UserActions';
+import { addUserAsync } from '../Redux/User/UserActions';
 
 function UserRegister() {
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ function UserRegister() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(addUser({ email: email, password: password }));
+    dispatch(addUserAsync({ email: email, password: password }));
     setEmail('');
     setPassword('');
   };
