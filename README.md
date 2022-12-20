@@ -1,6 +1,6 @@
 # Topics for POC
 
 ```
-React Redux
+React Redux, Thunk
 React Hook Form
 ```
