@@ -1,4 +1,10 @@
-import { ADD_USER, REMOVE_USER, SET_LIST } from './UserType';
+import {
+  ADD_USER,
+  REMOVE_USER,
+  SET_LIST,
+  ENABLE_LOADING,
+  DISABLE_LOADING,
+} from './UserType';
 import axios from 'axios';
 export function addUser(user) {
   return {
@@ -25,11 +31,24 @@ export function setList(list) {
     payload: list,
   };
 }
+
+export function enableLoading() {
+  return {
+    type: ENABLE_LOADING,
+  };
+}
+export function disableLoading() {
+  return {
+    type: DISABLE_LOADING,
+  };
+}
 export function setListAsync() {
   return async (dispatch) => {
+    dispatch(enableLoading());
     const { data } = await axios.get(
       'https://jsonplaceholder.typicode.com/users'
     );
     dispatch(setList(data));
+    dispatch(disableLoading());
   };
 }
