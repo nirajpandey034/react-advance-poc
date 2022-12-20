@@ -48,7 +48,8 @@ function UserBoard() {
         </button>
       )}
 
-      {state.list.length > 0 && state.list.map((item) => <p>{item.name}</p>)}
+      {state.list.length > 0 &&
+        state.list.map((item, index) => <p key={index}>{item.name}</p>)}
     </div>
   );
 }

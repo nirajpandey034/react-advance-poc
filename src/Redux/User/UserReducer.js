@@ -10,7 +10,7 @@ const UserReducer = (state = intialState, action) => {
     case SET_LIST: {
       return {
         data: state.data,
-        list: [...state.list, ...action.payload],
+        list: [...action.payload],
       };
     }
     case ADD_USER:
