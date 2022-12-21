@@ -4,7 +4,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../Schema/UserSchema';
 
+
+import { useDispatch } from 'react-redux';
+import { addUser } from '../Redux/User/UserActions';
+
 function UserForm() {
+    const dispatch = useDispatch();
   const {
     register,
     formState: { errors },
@@ -16,6 +21,7 @@ function UserForm() {
   });
   const submitForm = (data) => {
     console.log(data);
+    dispatch(addUser(data));
     reset();
   };
   return (
