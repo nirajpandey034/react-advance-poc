@@ -1,20 +1,21 @@
 import React from 'react';
+import { DevTool } from '@hookform/devtools';
 import { Container, TextField, Button, Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../Schema/UserSchema';
 
-
 import { useDispatch } from 'react-redux';
 import { addUser } from '../Redux/User/UserActions';
 
 function UserForm() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
+    control,
   } = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -49,6 +50,7 @@ function UserForm() {
           </Button>
         </Stack>
       </form>
+      <DevTool control={control} />
     </Container>
   );
 }
